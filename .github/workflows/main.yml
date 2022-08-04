@@ -22,12 +22,12 @@ jobs:
           java-version: 11
       
       - name: Build project
-        run: bash ./gradlew clean build
+        run: bash ./gradlew build --stacktrace
       
       - name: Generate code coverage reports
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
+          api-level: 23
           target: default
           arch: x86
           profile: Nexus 6
