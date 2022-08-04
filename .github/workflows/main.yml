@@ -22,7 +22,7 @@ jobs:
           java-version: 11
       
       - name: Build debug
-        run: bash ./gradlew build createDebugCoverageReport
+        run: bash ./gradlew buildDebug
       
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
