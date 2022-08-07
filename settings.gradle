@@ -1,3 +1,5 @@
 rootProject.name = "JaCoCOExample"
 include ':app'
 include ':data'
+include ':kotLibrary'
+include ':javaLibrary'
