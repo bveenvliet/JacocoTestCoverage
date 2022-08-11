@@ -49,11 +49,11 @@ class MainFragment : Fragment() {
                     val result = viewModel.add(Integer.parseInt(input1), Integer.parseInt(input2))
                     resultText.text = result.toString()
                 } catch (e: NumberFormatException) {
-                    resultText.text = "Please check your input format!"
+                    resultText.text = getString(R.string.error_input_format)
                     throw NumberFormatException("MainFragment: Incorrect Input.")
                 }
             } else {
-                resultText.text = "Input can not be empty!"
+                resultText.text = getString(R.string.error_empty_input)
             }
         }
     }
