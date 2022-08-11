@@ -4,9 +4,10 @@ import android.app.Activity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.*
-//import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 //import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -57,6 +58,32 @@ class ChangeTextBehaviorKtTest {
 
         // This view is in a different Activity, no need to tell Espresso.
 //        onView(withId(R.id.show_text_view)).check(matches(withText(STRING_TO_BE_TYPED)))
+    }
+
+    @Test
+    fun add_number() {
+        val input1 = 2
+        val input2 = 3
+        val expect = (input1 + input2).toString()
+
+        onView(withId(R.id.edit_text_1)).perform(typeText(input1.toString()))
+        onView(withId(R.id.edit_text_2)).perform(typeText(input2.toString()))
+        onView(withId(R.id.add)).perform(click())
+
+        onView(withId(R.id.result_text)).check(matches(withText(expect)))
+    }
+
+    @Test
+    fun add_number_emptyInput() {
+        val input1 = "2"
+        val input2 = ""
+        val expect = R.string.error_empty_input
+
+        onView(withId(R.id.edit_text_1)).perform(typeText(input1))
+        onView(withId(R.id.edit_text_2)).perform(typeText(input2))
+        onView(withId(R.id.add)).perform(click())
+
+        onView(withId(R.id.result_text)).check(matches(withText(expect)))
     }
 
 //    companion object {
