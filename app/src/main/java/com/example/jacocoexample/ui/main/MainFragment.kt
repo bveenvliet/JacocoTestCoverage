@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.widget.doOnTextChanged
 import com.example.jacocoexample.R
 
 class MainFragment : Fragment() {
@@ -28,10 +29,10 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val root = inflater.inflate(R.layout.main_fragment, container, false)
-        editText1 = root.findViewById(R.id.edit_text_1)
-        editText2 = root.findViewById(R.id.edit_text_2)
-        resultText = root.findViewById(R.id.result_text)
-        button = root.findViewById(R.id.add)
+        editText1 = root.findViewById(R.id.etNumber1)
+        editText2 = root.findViewById(R.id.etNumber2)
+        resultText = root.findViewById(R.id.tvResult)
+        button = root.findViewById(R.id.btnAdd)
         return root
     }
 
@@ -41,23 +42,31 @@ class MainFragment : Fragment() {
     }
 
     private fun subscribeToChange() {
+        // update view model when value changes
+        editText1.doOnTextChanged { text, _, _, _ ->
+            viewModel.number1 = Integer.parseInt(text.toString())
+        }
+
+        // update view model when value changes
+        editText2.doOnTextChanged { text, _, _, _ ->
+            viewModel.number2 = Integer.parseInt(text.toString())
+        }
+
+        // call view model method
         button.setOnClickListener {
-            val input1 = editText1.text.toString()
-            val input2 = editText2.text.toString()
-            if (input1 != "" && input2 != "") {
-                try {
-                    val result = viewModel.add(Integer.parseInt(input1), Integer.parseInt(input2))
-                    resultText.text = result.toString()
-                } catch (e: NumberFormatException) {
-                    resultText.text = getString(R.string.error_input_format)
-                    throw NumberFormatException("MainFragment: Incorrect Input.")
-                }
-            } else {
-                resultText.text = getString(R.string.error_empty_input)
-            }
+            viewModel.add()
+            updateUi()
         }
     }
 
+    private fun updateUi() {
+        editText1.setText(viewModel.number1.toString())
+        editText2.setText(viewModel.number2.toString())
+        resultText.text = viewModel.answer.toString()
+    }
+
+    @Suppress("DEPRECATION")
+    @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
