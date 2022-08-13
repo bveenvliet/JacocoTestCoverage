@@ -5,11 +5,13 @@ import com.example.kotlibrary.Calculator
 
 class MainViewModel : ViewModel() {
 
-    fun checkAddition() {
-        println("asdasd")
+    private val calculator = Calculator()
+    var number1: Int = 0
+    var number2: Int = 0
+    var answer: Int = 0
+
+    fun add() {
+        answer = calculator.add(number1, number2)
     }
 
-    fun add(a: Int, b: Int): Int {
-        return Calculator().add(a, b)
-    }
 }

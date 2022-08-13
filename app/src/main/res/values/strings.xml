@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">JaCoCOExample</string>
-    <string name="error_input_format">Please check your input format!</string>
-    <string name="error_empty_input">Input can not be empty!</string>
+    <string name="calculator">Calculator</string>
+    <string name="add">Add</string>
+    <string name="result">Result</string>
+    <string name="any_number">Any number</string>
+    <string name="another_number">Another number</string>
 </resources>

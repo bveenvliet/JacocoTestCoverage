@@ -16,6 +16,11 @@ class MainViewModelTest {
 
     @Test
     fun addition_isCorrect() {
-        assertEquals(3, viewModel.add(1, 2))
+        assertEquals(0, viewModel.answer)
+        viewModel.number1 = 1
+        viewModel.number2 = 2
+        assertEquals(0, viewModel.answer)
+        viewModel.add()
+        assertEquals(3, viewModel.answer)
     }
 }

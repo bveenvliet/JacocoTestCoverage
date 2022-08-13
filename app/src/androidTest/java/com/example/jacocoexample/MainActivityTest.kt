@@ -8,7 +8,6 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-//import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
@@ -42,7 +41,7 @@ class ChangeTextBehaviorKtTest {
         // Type text and then press the button.
 //        onView(withId(R.id.message))
 //            .perform(typeText(STRING_TO_BE_TYPED), closeSoftKeyboard())
-        onView(withId(R.id.add)).perform(click())
+        onView(withId(R.id.btnAdd)).perform(click())
 
         // Check that the text was changed.
 //        onView(withId(R.id.textToBeChanged)).check(matches(withText(STRING_TO_BE_TYPED)))
@@ -54,7 +53,7 @@ class ChangeTextBehaviorKtTest {
 //        onView(withId(R.id.editTextUserInput)).perform(typeText(STRING_TO_BE_TYPED),
 //            closeSoftKeyboard())
 //        onView(withId(R.id.activityChangeTextBtn)).perform(click())
-        onView(withId(R.id.add)).perform(click())
+        onView(withId(R.id.btnAdd)).perform(click())
 
         // This view is in a different Activity, no need to tell Espresso.
 //        onView(withId(R.id.show_text_view)).check(matches(withText(STRING_TO_BE_TYPED)))
@@ -62,31 +61,28 @@ class ChangeTextBehaviorKtTest {
 
     @Test
     fun add_number() {
-        val input1 = 2
-        val input2 = 3
-        val expect = (input1 + input2).toString()
+        val input1 = "2"
+        val input2 = "3"
+        val expect = "5"
 
-        onView(withId(R.id.edit_text_1)).perform(typeText(input1.toString()))
-        onView(withId(R.id.edit_text_2)).perform(typeText(input2.toString()))
-        onView(withId(R.id.add)).perform(click())
+        onView(withId(R.id.etNumber1)).perform(typeText(input1))
+        onView(withId(R.id.etNumber2)).perform(typeText(input2))
+        onView(withId(R.id.btnAdd)).perform(click())
 
-        onView(withId(R.id.result_text)).check(matches(withText(expect)))
+        onView(withId(R.id.tvResult)).check(matches(withText(expect)))
     }
 
     @Test
     fun add_number_emptyInput() {
         val input1 = "2"
         val input2 = ""
-        val expect = R.string.error_empty_input
+        val expect = "2"
 
-        onView(withId(R.id.edit_text_1)).perform(typeText(input1))
-        onView(withId(R.id.edit_text_2)).perform(typeText(input2))
-        onView(withId(R.id.add)).perform(click())
+        onView(withId(R.id.etNumber1)).perform(typeText(input1))
+        onView(withId(R.id.etNumber2)).perform(typeText(input2))
+        onView(withId(R.id.btnAdd)).perform(click())
 
-        onView(withId(R.id.result_text)).check(matches(withText(expect)))
+        onView(withId(R.id.tvResult)).check(matches(withText(expect)))
     }
 
-//    companion object {
-//        const val STRING_TO_BE_TYPED = "111"
-//    }
 }
