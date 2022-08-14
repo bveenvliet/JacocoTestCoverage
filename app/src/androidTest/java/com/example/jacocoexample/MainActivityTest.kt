@@ -38,9 +38,8 @@ class ChangeTextBehaviorKtTest {
         val expect = "5"
 
         // Type text and then press the button.
-        onView(withId(R.id.etNumber1)).perform(typeText(input1))
-        onView(withId(R.id.etNumber2)).perform(typeText(input2))
-        closeSoftKeyboard()
+        onView(withId(R.id.etNumber1)).perform(typeText(input1), closeSoftKeyboard())
+        onView(withId(R.id.etNumber2)).perform(typeText(input2), closeSoftKeyboard())
         onView(withId(R.id.btnAdd)).perform(click())
 
         // Check that the text was changed.
@@ -54,9 +53,8 @@ class ChangeTextBehaviorKtTest {
         val expect = "2"
 
         // Type text and then press the button.
-        onView(withId(R.id.etNumber1)).perform(typeText(input1))
-        onView(withId(R.id.etNumber2)).perform(typeText(input2))
-        closeSoftKeyboard()
+        onView(withId(R.id.etNumber1)).perform(typeText(input1), closeSoftKeyboard())
+        onView(withId(R.id.etNumber2)).perform(typeText(input2), closeSoftKeyboard())
         onView(withId(R.id.btnAdd)).perform(click())
 
         // Check that the text was changed.
