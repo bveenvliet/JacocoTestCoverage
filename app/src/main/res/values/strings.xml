@@ -2,6 +2,7 @@
     <string name="app_name">JaCoCOExample</string>
     <string name="calculator">Calculator</string>
     <string name="add">Add</string>
+    <string name="subtract">Subtract</string>
     <string name="result">Result</string>
     <string name="any_number">Any number</string>
     <string name="another_number">Another number</string>

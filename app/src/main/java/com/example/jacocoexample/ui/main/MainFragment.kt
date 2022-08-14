@@ -22,7 +22,8 @@ class MainFragment : Fragment() {
     private lateinit var editText1: EditText
     private lateinit var editText2: EditText
     private lateinit var resultText: TextView
-    private lateinit var button: Button
+    private lateinit var btnAdd: Button
+    private lateinit var btnSubtract: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +33,8 @@ class MainFragment : Fragment() {
         editText1 = root.findViewById(R.id.etNumber1)
         editText2 = root.findViewById(R.id.etNumber2)
         resultText = root.findViewById(R.id.tvResult)
-        button = root.findViewById(R.id.btnAdd)
+        btnAdd = root.findViewById(R.id.btnAdd)
+        btnSubtract = root.findViewById(R.id.btnSubtract)
         return root
     }
 
@@ -52,11 +54,18 @@ class MainFragment : Fragment() {
             viewModel.number2 = Integer.parseInt(text.toString())
         }
 
-        // call view model method
-        button.setOnClickListener {
+        // call add view model method
+        btnAdd.setOnClickListener {
             viewModel.add()
             updateUi()
         }
+
+        // call subtract view model method
+        btnSubtract.setOnClickListener {
+            viewModel.subtract()
+            updateUi()
+        }
+
     }
 
     private fun updateUi() {

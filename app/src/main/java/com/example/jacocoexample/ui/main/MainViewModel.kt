@@ -14,4 +14,8 @@ class MainViewModel : ViewModel() {
         answer = calculator.add(number1, number2)
     }
 
+    fun subtract() {
+        answer = calculator.subtract(number1, number2)
+    }
+
 }
