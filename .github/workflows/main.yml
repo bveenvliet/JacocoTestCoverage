@@ -22,10 +22,12 @@ jobs:
       - name: Setup java 11
         uses: actions/setup-java@v3
         with:
-          java-version: 11
+          distribution: 'zulu'
+          java-version: '11'
+          cache: 'gradle'
 
       - name: Build project
-        run: bash ./gradlew build --stacktrace
+        run: ./gradlew build --no-daemon
 
       - name: Generate code coverage reports
         uses: reactivecircus/android-emulator-runner@v2
