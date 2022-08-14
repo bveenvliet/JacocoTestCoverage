@@ -61,4 +61,19 @@ class ChangeTextBehaviorKtTest {
         onView(withId(R.id.tvResult)).check(matches(withText(expect)))
     }
 
+    @Test
+    fun subtract_number() {
+        val input1 = "5"
+        val input2 = "3"
+        val expect = "2"
+
+        // Type text and then press the button.
+        onView(withId(R.id.etNumber1)).perform(typeText(input1), closeSoftKeyboard())
+        onView(withId(R.id.etNumber2)).perform(typeText(input2), closeSoftKeyboard())
+        onView(withId(R.id.btnSubtract)).perform(click())
+
+        // Check that the text was changed.
+        onView(withId(R.id.tvResult)).check(matches(withText(expect)))
+    }
+
 }
