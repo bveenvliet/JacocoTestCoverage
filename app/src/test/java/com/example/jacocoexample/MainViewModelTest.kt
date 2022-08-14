@@ -23,4 +23,14 @@ class MainViewModelTest {
         viewModel.add()
         assertEquals(3, viewModel.answer)
     }
+
+    @Test
+    fun subtraction_isCorrect() {
+        assertEquals(0, viewModel.answer)
+        viewModel.number1 = 3
+        viewModel.number2 = 2
+        assertEquals(0, viewModel.answer)
+        viewModel.subtract()
+        assertEquals(1, viewModel.answer)
+    }
 }
